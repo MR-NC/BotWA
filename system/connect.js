@@ -2,7 +2,8 @@ const { DisconnectReason, useMultiFileAuthState, fetchLatestBaileysVersion } = r
 const fs = require("fs")
 const chalk = require("chalk")
 const pino = require("pino")
-const config = require("@config")
+const { githubEmail, githubUser, linkGroup, ownerNumber } = require("@config")
+const { exec } = require("child_process")
 const { Boom } = require("@hapi/boom")
 const { Message, readCommands } = require("@message/msg") 
 const { decodeJid } = require("@libs/function")
@@ -59,6 +60,20 @@ var autoRead = db.settings[decodeJid(sock.user.id)].autoread
 } catch {
 var autoRead = false
 }
+//=================================================//
+try{
+var autoBackup = db.settings[decodeJid(sock.user.id)].autobackup
+} catch {
+var autoBackup = false
+}
+//=================================================//
+setInterval(() => {
+if (autoBackup) {
+exec(`git config --global user.email "${githubEmail}" && git config --global user.name "${githubUser}" && git add . && git commit -m "Updating" && git push`, (stdout, err) => {
+if (stdout) sock.sendMessage(ownerNumber + "@s.whatsapp.net", { text: "Backup source code success....." })
+if (err) console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), `${err}`)
+})
+}}, 60000 * 30)
 //=================================================//
 setInterval(() => {
 if (Object.keys(db.cooldown).length > 0) {
@@ -117,9 +132,9 @@ console.log("Connecting...")
 } else if (connection === "open") {
 readCommands()
 console.log(chalk.whiteBright("├"), chalk.keyword("aqua")("[ CONNECT ]"), "Connecting to the WhatsApp bot....")
-if (autoJoin && config.linkGroup.includes("https://chat.whatsapp.com/")) {
+if (autoJoin && linkGroup.includes("https://chat.whatsapp.com/")) {
 try{
-sock.groupAcceptInvite(config.linkGroup.split("https://chat.whatsapp.com/")[1])
+sock.groupAcceptInvite(linkGroup.split("https://chat.whatsapp.com/")[1])
 } catch { console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), "link group invalid!") }
 }}
 })
