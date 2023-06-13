@@ -55,6 +55,7 @@ return `  ╭─▸ 𝘖𝘸𝘯𝘦𝘳 𝘔𝘦𝘯𝘶
   │⭔ ${prefix}bcpc ${featError("bcpc")? yes : no }
   │⭔ ${prefix}creategc ${featError("creategc")? yes : no }
   │⭔ ${prefix}updatefile ${featError("updatefile")? yes : no }
+  │⭔ ${prefix}backup ${featError("backup")? yes : no }
   │⭔ ${prefix}getfile ${featError("getfile")? yes : no }
   │⭔ ${prefix}getfitur ${featError("getfitur")? yes : no }
   │⭔ ${prefix}getfolder ${featError("getfolder")? yes : no }
