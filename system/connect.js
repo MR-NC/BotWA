@@ -115,7 +115,7 @@ connectToWhatsApp()
 } else if (connection === "connecting") {
 console.log("Connecting...")
 } else if (connection === "open") {
-readCommands("./system/commands")
+readCommands()
 console.log(chalk.whiteBright("├"), chalk.keyword("aqua")("[ CONNECT ]"), "Connecting to the WhatsApp bot....")
 if (autoJoin && config.linkGroup.includes("https://chat.whatsapp.com/")) {
 try{
