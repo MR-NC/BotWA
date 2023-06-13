@@ -1977,10 +1977,10 @@ console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), `${e}`)
 }}
 //================================================================\\
 const readCommands = (pathName = "./system/commands") => {
-const command = fs.readdirSync(pathName).filter((file) => file.endsWith(".js") && !file.endsWith(".js.bak"))
+const command = fs.readdirSync("./system/commands").filter((file) => file.endsWith(".js") && !file.endsWith(".js.bak"))
 for (let file of command) {
-const cmdObject = require("../." + pathName + "/" + file)
-reloadFile(pathName + "/" + file)
+const cmdObject = require("@commands/" + file)
+reloadFile("./system/commands/" + file)
 const cmdOptions = {
 commands: cmdObject.commands,
 cooldown: cmdObject?.cooldown? cmdObject.cooldown : 0,
@@ -2017,7 +2017,7 @@ callback: cmdObject.callback
 if (cmdObject.commands) {
 cmdObject.commands.forEach((x) => {
 commands.set(x, cmdOptions)
-if (!Object.keys(db.allcommand).includes(x)) db.allcommand[x] = { tempFile: `${pathName}/${file}` }
+if (!Object.keys(db.allcommand).includes(x)) db.allcommand[x] = { tempFile: "./system/commands/" + file }
 })
 }}
 }
