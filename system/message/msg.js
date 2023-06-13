@@ -1972,8 +1972,14 @@ setReply(util.format(stdout))
 })
 }
 //================================================================\\
-} catch (e) {
-console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), `${e}`)
+} catch (err) {
+let e = String(err)
+if (e.includes("this.isZero")) return
+if (e.includes("rate-overlimit")) return
+if (e.includes("Connection Closed")) return
+if (e.includes("Timed Out")) return
+if (e.includes("Value not found")) return
+console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), `${err}`)
 }}
 //================================================================\\
 const readCommands = (pathName = "./system/commands") => {
