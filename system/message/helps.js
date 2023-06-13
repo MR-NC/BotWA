@@ -28,9 +28,8 @@ ${week}, ${calender}
  ◉ User Banned : ${Object.keys(db.banned).length}
 `}
 
-const fitur = (prefix) => {
-return`
-  ╭─▸ 𝘖𝘸𝘯𝘦𝘳 𝘔𝘦𝘯𝘶
+const ownerMenu = (prefix) => {
+return `  ╭─▸ 𝘖𝘸𝘯𝘦𝘳 𝘔𝘦𝘯𝘶
   │
   │⭔ ${prefix}anticall ${featError("anticall")? yes : no }
   │⭔ ${prefix}antispam ${featError("antispam")? yes : no }
@@ -76,8 +75,11 @@ return`
   │⭔ ${prefix}setreply ${featError("setreply")? yes : no }
   │⭔ ${prefix}setwelcome ${featError("setwelcome")? yes : no }
   │
-  ╰────────────˧
+  ╰────────────˧`
+}
 
+const groupMenu = (prefix) => {
+return `  
   ╭─▸ 𝘎𝘳𝘰𝘶𝘱 𝘔𝘦𝘯𝘶
   │
   │⭔ ${prefix}antilink ${featError("antilink")? yes : no }
@@ -114,8 +116,11 @@ return`
   │⭔ ${prefix}promote ${featError("promote")? yes : no }
   │⭔ ${prefix}demote ${featError("demote")? yes : no }
   │
-  ╰────────────˧
+  ╰────────────˧`
+}
 
+const toolsMenu = (prefix) => {
+return `  
   ╭─▸ 𝘛𝘰𝘰𝘭𝘴 𝘔𝘦𝘯𝘶
   │
   │⭔ ${prefix}dashboard ${featError("dashboard")? yes : no }
@@ -127,21 +132,30 @@ return`
   │⭔ ${prefix}listgc ${featError("listgc")? yes : no }
   │⭔ ${prefix}listpc ${featError("listpc")? yes : no }
   │
-  ╰────────────˧
-  
+  ╰────────────˧`
+}
+
+const downloadMenu = (prefix) => {
+return `
   ╭─▸ 𝘋𝘰𝘸𝘯𝘭𝘰𝘢𝘥𝘦𝘳
   │
   │⭔ ${prefix}tiktokmp3 ${featError("tiktokmp3")? yes : no }
   │⭔ ${prefix}tiktokmp4 ${featError("tiktokmp4")? yes : no }
   │
-  ╰────────────˧   
-    
+  ╰────────────˧`
+}
+
+const converterMenu = (prefix) => {
+return `
   ╭─▸ 𝘊𝘰𝘯𝘷𝘦𝘳𝘵𝘦𝘳 𝘔𝘦𝘯𝘶
   │
   │⭔ ${prefix}tostick ${featError("tostick")? yes :no }
   │
-  ╰────────────˧
-  
+  ╰────────────˧`
+}
+
+const randomMenu = (prefix) => {
+return `
   ╭─▸ 𝘙𝘢𝘯𝘥𝘰𝘮 𝘔𝘦𝘯𝘶
   │
   │⭔ ${prefix}awoo ${featError("awoo")? yes : no }
@@ -192,9 +206,12 @@ return`
   │⭔ ${prefix}wink2 ${featError("wink2")? yes : no }
   │⭔ ${prefix}yeet ${featError("yeet")? yes : no }
   │
-  ╰────────────˧
-  
-  ╭─▸ 𝘚𝘵𝘰𝘳𝘢𝘨𝘦
+  ╰────────────˧`
+}
+
+const storageMenu = (prefix) => {
+return `
+  ╭─▸ 𝘚𝘵𝘰𝘳𝘢𝘨𝘦 𝘔𝘦𝘯𝘶
   │
   │⭔ ${prefix}addowner ${featError("addowner")? yes : no }
   │⭔ ${prefix}addpremium ${featError("addpremium")? yes : no }
@@ -218,11 +235,22 @@ return`
   │⭔ ${prefix}liststick ${featError("liststick")? yes : no }
   │⭔ ${prefix}listvn ${featError("listvn")? yes : no }
   │
-  ╰────────────˧
+  ╰────────────˧`
+}
+
+const fitur = (prefix) => {
+return `
+${ownerMenu(prefix)}
+${groupMenu(prefix)}
+${toolsMenu(prefix)}
+${downloadMenu(prefix)}
+${converterMenu(prefix)}
+${randomMenu(prefix)}
+${storageMenu(prefix)}
 `}
 
 
-module.exports = { menu, fitur }
+module.exports = { ownerMenu, groupMenu, toolsMenu, downloadMenu, converterMenu, randomMenu, storageMenu, menu, fitur }
 
 
 
