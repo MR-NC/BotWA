@@ -90,6 +90,7 @@ if (!("autovn" in db.settings[m.botNumber])) db.settings[m.botNumber].autovn = f
 if (!("autoquoted" in db.settings[m.botNumber])) db.settings[m.botNumber].autoquoted = true
 if (!("autolevel" in db.settings[m.botNumber])) db.settings[m.botNumber].autolevel = false
 if (!("autojoin" in db.settings[m.botNumber])) db.settings[m.botNumber].autojoin = false
+if (!("autobackup" in db.settings[m.botNumber])) db.settings[m.botNumber].autobackup = false
 if (!("anticall" in db.settings[m.botNumber])) db.settings[m.botNumber].anticall = false
 if (!("antispam" in db.settings[m.botNumber])) db.settings[m.botNumber].antispam = false
 } else db.settings[m.botNumber] = {
@@ -110,6 +111,7 @@ autovn: false,
 autoquoted: true, 
 autolevel: false,
 autojoin: false,
+autobackup: false,
 anticall: false,
 antispam: false,
 }

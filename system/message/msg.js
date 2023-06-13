@@ -29,6 +29,7 @@ const autoVn = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.bot
 const autoQuoted = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].autoquoted : true
 const autoLevel = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].autolevel : false
 const autoJoin = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].autojoin : false
+const autoBackup = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].autobackup : false
 const antiCall = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].anticall : false
 const antiSpam = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].antispam : false
 //=========================[ SECURITY GROUP ]=========================\\
@@ -1803,7 +1804,7 @@ onlyWait()
 //=========================[ RESPON COMMAND && ADD ADD DASHBOARD ]=========================\\
 try{
 await cmdSuccess(command) 
-await cmdOptions.callback(sock, m, { setReply, setQuoted, fpoll, fpayment, fvn, fgif, faudio, fvideo, fdocument, fimage, flocation, ftroli, ftext, fkontak, ftoko, ofrply, kfrply, dfrply, zfrply, pfrply, gfrply, command, prefix, thePrefix, isQuotedAllMedia, isQuotedDocument, isQuotedLocation, isQuotedContact, isQuotedViewOnce, isQuotedAudio, isQuotedSticker, isQuotedVideo, isQuotedImage, isQuotedText, isAllMedia, isDocument, isLocation, isContact, isViewOnce, isAudio, isSticker, isVideo, isImage, isText, isWelcome, isBanChat, isAutoReactGroup, isAutoResponGroup, isAntiSange, isAntiToxic, isAntiViewOnce, isAntiDelete, isAntiTag, isAntiAsing, isAntiVirtex, isAntiLinkTwitter, isAntiLinkTiktok, isAntiLinkWhatsapp, isAntiLinkTelegram, isAntiLinkInstagram, isAntiLinkFacebook, isAntiLinkYoutube, isAntiLink, isGroupAdmins, isBotGroupAdmins, groupOwner, groupAdmins, groupMembers, participants, groupName, groupMetadata, antiSpam, antiCall, autoJoin, autoLevel, autoQuoted, autoVn, autoRead, autoRespon, autoSticker, autoBio, autoReport, autoBlockCmd, auto, mode, replyType, quotedType, setPrefix, setWelcome, setMenu }) 
+await cmdOptions.callback(sock, m, { setReply, setQuoted, fpoll, fpayment, fvn, fgif, faudio, fvideo, fdocument, fimage, flocation, ftroli, ftext, fkontak, ftoko, ofrply, kfrply, dfrply, zfrply, pfrply, gfrply, command, prefix, thePrefix, isQuotedAllMedia, isQuotedDocument, isQuotedLocation, isQuotedContact, isQuotedViewOnce, isQuotedAudio, isQuotedSticker, isQuotedVideo, isQuotedImage, isQuotedText, isAllMedia, isDocument, isLocation, isContact, isViewOnce, isAudio, isSticker, isVideo, isImage, isText, isWelcome, isBanChat, isAutoReactGroup, isAutoResponGroup, isAntiSange, isAntiToxic, isAntiViewOnce, isAntiDelete, isAntiTag, isAntiAsing, isAntiVirtex, isAntiLinkTwitter, isAntiLinkTiktok, isAntiLinkWhatsapp, isAntiLinkTelegram, isAntiLinkInstagram, isAntiLinkFacebook, isAntiLinkYoutube, isAntiLink, isGroupAdmins, isBotGroupAdmins, groupOwner, groupAdmins, groupMembers, participants, groupName, groupMetadata, antiSpam, antiCall, autoBackup, autoJoin, autoLevel, autoQuoted, autoVn, autoRead, autoRespon, autoSticker, autoBio, autoReport, autoBlockCmd, auto, mode, replyType, quotedType, setPrefix, setWelcome, setMenu }) 
 } catch (e) {
 cmdFailed(command, e)
 }

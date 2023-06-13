@@ -44,6 +44,7 @@ return `  ╭─▸ 𝘖𝘸𝘯𝘦𝘳 𝘔𝘦𝘯𝘶
   │⭔ ${prefix}autorespon ${featError("autorespon")? yes : no }
   │⭔ ${prefix}autosticker ${featError("autosticker")? yes : no }
   │⭔ ${prefix}autovn ${featError("autovn")? yes : no }
+  │⭔ ${prefix}autobackup ${featError("autobackup")? yes : no }
   │⭔ ${prefix}ban ${featError("ban")? yes : no }
   │⭔ ${prefix}unban ${featError("unban")? yes : no }
   │⭔ ${prefix}block ${featError("block")? yes : no }
