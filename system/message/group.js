@@ -58,62 +58,62 @@ var AppType = "application/vnd.openxmlformats-officedocument.wordprocessingml.do
 } 
 if (isWelcome && isAdd && !isMe) {
 if (setWelcome == "document") {
-sock.sendMessage(m.chat, { contextInfo: options, document: fs.readFileSync("./temp/Zzzzzzzzzz@4.0.4"), mimetype: AppType, title : "Footer text", fileLength : 999999999999, pageCount: 100, fileName : botName, caption: textWelcome, headerType: "DOCUMENT", jpegThumbnail: profileUser })
+sock.sendMessage(from, { contextInfo: options, document: fs.readFileSync("./temp/Zzzzzzzzzz@4.0.4"), mimetype: AppType, title : "Footer text", fileLength : 999999999999, pageCount: 100, fileName : botName, caption: textWelcome, headerType: "DOCUMENT", jpegThumbnail: profileUser })
 } else if (setWelcome == "context") {
-sock.sendMessage(m.chat, { text: textWelcome, contextInfo: options })
+sock.sendMessage(from, { text: textWelcome, contextInfo: options })
 } else if (setWelcome == "viewonce") {
-sock.sendMessage(m.chat, { image: profileUser, caption: textWelcome, viewOnce: true, contextInfo: options })
+sock.sendMessage(from, { image: profileUser, caption: textWelcome, viewOnce: true, contextInfo: options })
 } else if (setWelcome == "image") {
-sock.sendMessage(m.chat, { image: profileUser, caption: textWelcome, contextInfo: options })
+sock.sendMessage(from, { image: profileUser, caption: textWelcome, contextInfo: options })
 } else if (setWelcome == "gif") {
-sock.sendMessage(m.chat, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textWelcome, gifPlayback: true })
+sock.sendMessage(from, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textWelcome, gifPlayback: true })
 } else if (setWelcome == "video") {
-sock.sendMessage(m.chat, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textWelcome, gifPlayback: false })
+sock.sendMessage(from, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textWelcome, gifPlayback: false })
 }
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ GROUP UPDATE ]"), `${senderNumber} telah bergabung ke group ${groupName}`)
 } else if (isWelcome && isRemove && !isMe) {
 if (setWelcome == "document") {
-sock.sendMessage(m.chat, { contextInfo: options, document: fs.readFileSync("./temp/Zzzzzzzzzz@4.0.4"), mimetype: AppType, title : "Footer text", fileLength : 999999999999, pageCount: 100, fileName : botName, caption: textLeave, headerType: "DOCUMENT", jpegThumbnail: profileUser })
+sock.sendMessage(from, { contextInfo: options, document: fs.readFileSync("./temp/Zzzzzzzzzz@4.0.4"), mimetype: AppType, title : "Footer text", fileLength : 999999999999, pageCount: 100, fileName : botName, caption: textLeave, headerType: "DOCUMENT", jpegThumbnail: profileUser })
 } else if (setWelcome == "context") {
-sock.sendMessage(m.chat, { text: textLeave, contextInfo: options })
+sock.sendMessage(from, { text: textLeave, contextInfo: options })
 } else if (setWelcome == "viewonce") {
-sock.sendMessage(m.chat, { image: profileUser, caption: textLeave, viewOnce: true, contextInfo: options })
+sock.sendMessage(from, { image: profileUser, caption: textLeave, viewOnce: true, contextInfo: options })
 } else if (setWelcome == "image") {
-sock.sendMessage(m.chat, { image: profileUser, caption: textLeave, contextInfo: options })
+sock.sendMessage(from, { image: profileUser, caption: textLeave, contextInfo: options })
 } else if (setWelcome == "gif") {
-sock.sendMessage(m.chat, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textLeave, gifPlayback: true })
+sock.sendMessage(from, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textLeave, gifPlayback: true })
 } else if (setWelcome == "video") {
-sock.sendMessage(m.chat, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textLeave, gifPlayback: false })
+sock.sendMessage(from, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textLeave, gifPlayback: false })
 }
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ GROUP UPDATE ]"), `${senderNumber} telah keluar dari group ${groupName}`)
 } else if (isWelcome && isPromote && !NotMe) {
 if (setWelcome == "document") {
-sock.sendMessage(m.chat, { contextInfo: options, document: fs.readFileSync("./temp/Zzzzzzzzzz@4.0.4"), mimetype: AppType, title : "Footer text", fileLength : 999999999999, pageCount: 100, fileName : botName, caption: textPormote, headerType: "DOCUMENT", jpegThumbnail: profileUser })
+sock.sendMessage(from, { contextInfo: options, document: fs.readFileSync("./temp/Zzzzzzzzzz@4.0.4"), mimetype: AppType, title : "Footer text", fileLength : 999999999999, pageCount: 100, fileName : botName, caption: textPormote, headerType: "DOCUMENT", jpegThumbnail: profileUser })
 } else if (setWelcome == "context") {
-sock.sendMessage(m.chat, { text: textPormote, contextInfo: options })
+sock.sendMessage(from, { text: textPormote, contextInfo: options })
 } else if (setWelcome == "viewonce") {
-sock.sendMessage(m.chat, { image: profileUser, caption: textPormote, viewOnce: true, contextInfo: options })
+sock.sendMessage(from, { image: profileUser, caption: textPormote, viewOnce: true, contextInfo: options })
 } else if (setWelcome == "image") {
-sock.sendMessage(m.chat, { image: profileUser, caption: textPormote, contextInfo: options })
+sock.sendMessage(from, { image: profileUser, caption: textPormote, contextInfo: options })
 } else if (setWelcome == "gif") {
-sock.sendMessage(m.chat, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textPormote, gifPlayback: true })
+sock.sendMessage(from, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textPormote, gifPlayback: true })
 } else if (setWelcome == "video") {
-sock.sendMessage(m.chat, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textPormote, gifPlayback: false })
+sock.sendMessage(from, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textPormote, gifPlayback: false })
 }
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ GROUP UPDATE ]"), `${senderNumber} telah di promote`)
 } else if (isWelcome && isDemote && !NotMe) {
 if (setWelcome == "document") {
-sock.sendMessage(m.chat, { contextInfo: options, document: fs.readFileSync("./temp/Zzzzzzzzzz@4.0.4"), mimetype: AppType, title : "Footer text", fileLength : 999999999999, pageCount: 100, fileName : botName, caption: textDemote, headerType: "DOCUMENT", jpegThumbnail: profileUser })
+sock.sendMessage(from, { contextInfo: options, document: fs.readFileSync("./temp/Zzzzzzzzzz@4.0.4"), mimetype: AppType, title : "Footer text", fileLength : 999999999999, pageCount: 100, fileName : botName, caption: textDemote, headerType: "DOCUMENT", jpegThumbnail: profileUser })
 } else if (setWelcome == "context") {
-sock.sendMessage(m.chat, { text: textDemote, contextInfo: options })
+sock.sendMessage(from, { text: textDemote, contextInfo: options })
 } else if (setWelcome == "viewonce") {
-sock.sendMessage(m.chat, { image: profileUser, caption: textDemote, viewOnce: true, contextInfo: options })
+sock.sendMessage(from, { image: profileUser, caption: textDemote, viewOnce: true, contextInfo: options })
 } else if (setWelcome == "image") {
-sock.sendMessage(m.chat, { image: profileUser, caption: textDemote, contextInfo: options })
+sock.sendMessage(from, { image: profileUser, caption: textDemote, contextInfo: options })
 } else if (setWelcome == "gif") {
-sock.sendMessage(m.chat, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textDemote, gifPlayback: true })
+sock.sendMessage(from, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textDemote, gifPlayback: true })
 } else if (setWelcome == "video") {
-sock.sendMessage(m.chat, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textDemote, gifPlayback: false })
+sock.sendMessage(from, { video: pfrply, contextInfo: options, jpegThumbnail: profileUser, caption: textDemote, gifPlayback: false })
 }
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ GROUP UPDATE ]"), `${senderNumber} telah di demote`)
 }
