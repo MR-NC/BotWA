@@ -1,6 +1,6 @@
 const { ownerNumber, botName } = require("@config")
 const { menu, fitur } = require("@message/helps")
-const { randomNomor } = require("@libs/function")
+const { pickRandom } = require("@libs/function")
 const fs = require("fs")
 module.exports = {
     commands: ["menu"],
@@ -20,15 +20,16 @@ module.exports = {
         sourceUrl: `https://wa.me/${ownerNumber}`,
         }}
         if (setMenu == "document") {
-        if (sock.pickRandom(["pptx","xlsx","zip","pdf","docx"]) == "pptx") {
+        const docType = pickRandom(["pptx","xlsx","zip","pdf","docx"])
+        if (docType == "pptx") {
         var AppType = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-        } else if (sock.pickRandom(["pptx","xlsx","zip","pdf","docx"]) == "xlsx") {
+        } else if (docType == "xlsx") {
         var AppType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        } else if (sock.pickRandom(["pptx","xlsx","zip","pdf","docx"]) == "zip") {
+        } else if (docType == "zip") {
         var AppType = "application/zip"
-        } else if (sock.pickRandom(["pptx","xlsx","zip","pdf","docx"]) == "pdf") {
+        } else if (docType == "pdf") {
         var AppType = "application/pdf"
-        } else if (sock.pickRandom(["pptx","xlsx","zip","pdf","docx"]) == "docx") {
+        } else if (docType == "docx") {
         var AppType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         } 
         sock.sendMessage(m.chat, { contextInfo: options, document: fs.readFileSync("./temp/Zzzzzzzzzz@4.0.4"), mimetype: AppType, title : "Footer text", fileLength : 999999999999, pageCount: 100, fileName : botName, caption: menunya + "\n" + fiturnya, headerType: "DOCUMENT", jpegThumbnail: dfrply }, { quoted: setQuoted })
