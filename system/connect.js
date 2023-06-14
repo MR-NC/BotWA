@@ -10,6 +10,7 @@ const { decodeJid } = require("@libs/function")
 const { serialize, makeWASocket } = require("@libs/serialize")
 const loadDatabase = require("@message/database")
 const callingMessage = require("@message/anticall")
+const groupMessage = require("@message/group")
 //=================================================//
 global.db = JSON.parse(fs.readFileSync("./database/database.json"))
 global.db = {
@@ -157,7 +158,11 @@ console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), `${e}`)
 })
 //=================================================//
 sock.ws.on("CB:call", async (json) => {
-callingMessage(sock, json)
+await callingMessage(sock, json)
+})
+//=================================================//
+sock.ev.on("group-participants.update", async (anu) => {
+await groupMessage(sock, anu)
 })
 //=================================================//
 sock.ev.on("creds.update", saveCreds)
