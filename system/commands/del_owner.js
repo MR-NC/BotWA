@@ -12,6 +12,6 @@ module.exports = {
         } else if (Object.keys(db.expired[m.botNumber].owner).includes(m.input)) {
         delete db.expired[m.botNumber].owner[m.input]
         }
-        await setReply("Success delete owner @" + input.split("@")[0])
+        await setReply("Success delete owner @" + m.input.split("@")[0])
     }
 }
