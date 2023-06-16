@@ -4,9 +4,9 @@ module.exports = {
     isSewa: true,
     isGroup: true,
     isAdmin: true,
-    callback: async (sock, m, { isBanChat, setReply }) => {
-        if (!isWelcome) return setReply("Sudah non active")
+    callback: async ({ m }) => {
+        if (!m.isBanChat) return m.reply("Sudah non active")
         db.chats[m.chat].banchat = false
-        setReply("Success unmute group")
+        m.reply("Success unmute group")
     }
 }

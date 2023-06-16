@@ -12,7 +12,7 @@ module.exports = {
 		       	  isQuotedDocument: true
                   }
     }, 
-    callback: async (sock, m, { isQuotedDocument, setReply }) => {
+    callback: async ({ sock, m, isQuotedDocument }) => {
         const data = {}
         const fileName = isQuotedDocument? m.quoted.message["documentMessage"].fileName : m.message["documentMessage"].fileName
         for(let x of fs.readdirSync("./").filter((x) => x.includes(".")).map((x) => "./" + x)) {
@@ -48,7 +48,7 @@ module.exports = {
         for(let x of fs.readdirSync("./system/libs").filter((x) => x.includes(".")).map((x) => "./system/libs/" + x)) {
         if (!Object.keys(data).includes(x)) data[basename(x)] = { temp: x }
         }
-        if (!Object.keys(data).includes(fileName)) return setReply("File apa itu kak")
+        if (!Object.keys(data).includes(fileName)) return m.reply("File apa itu kak")
         const media = await sock.downloadMediaMessage(isQuotedDocument? m.quoted : m)
         if (fileName.split(".")[1] !== "js") {
         setTimeout(() => {
@@ -57,12 +57,12 @@ module.exports = {
         setTimeout(() => {
         fs.writeFileSync(data[fileName].temp, media)
         }, 2000)
-        setReply("Success update file, Restaring bot...")
+        m.reply("Success update file, Restaring bot...")
         } else {
         setTimeout(() => {
         fs.writeFileSync(data[fileName].temp, media)
         }, 2000)
-        setReply("Success update file")
+        m.reply("Success update file")
         }
     }
 }
