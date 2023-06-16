@@ -127,10 +127,10 @@ return `
   │⭔ ${prefix}menu ${featError("menu")? yes : no }
   │⭔ ${prefix}owner ${featError("owner")? yes : no }
   │⭔ ${prefix}runtime ${featError("runtime")? yes : no }
-  │⭔ ${prefix}sewa ${featError("sewa")? yes : no }
   │⭔ ${prefix}speed ${featError("speed")? yes : no }
   │⭔ ${prefix}listgc ${featError("listgc")? yes : no }
   │⭔ ${prefix}listpc ${featError("listpc")? yes : no }
+  │⭔ ${prefix}listharga ${featError("listharga")? yes : no }
   │
   ╰────────────˧`
 }
