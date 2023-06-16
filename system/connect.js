@@ -104,17 +104,19 @@ delete db.antispam[x]
 //=================================================//
 sock.ev.on("connection.update", async (update) => {
 const { connection, lastDisconnect } = update
-if (connection === "close") {
+if (connection == "close") {
 const reason = new Boom(lastDisconnect?.error)?.output.statusCode
-if (reason === DisconnectReason.badSession) {
+if (lastDisconnect.error == "Error: Stream Errored (unknown)") {
+process.exit()
+} else if (reason == DisconnectReason.badSession) {
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), "Bad Session File, Please Delete Session and Scan Again")
-sock.logout()
+process.exit()
 } else if (reason == DisconnectReason.connectionClosed) {
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), "Connection closed, reconnecting....")
-connectToWhatsApp()
+process.exit()
 } else if (reason == DisconnectReason.connectionLost) {
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), "Connection Lost from Server, reconnecting....")
-connectToWhatsApp()
+process.exit()
 } else if (reason == DisconnectReason.connectionReplaced) {
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), "Connection Replaced, Another New Session Opened, Please Close Current Session First")
 sock.logout()
@@ -128,9 +130,9 @@ connectToWhatsApp()
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), "Connection TimedOut, Reconnecting....")
 connectToWhatsApp()
 }
-} else if (connection === "connecting") {
+} else if (connection == "connecting") {
 console.log("Connecting...")
-} else if (connection === "open") {
+} else if (connection == "open") {
 readCommands()
 console.log(chalk.whiteBright("├"), chalk.keyword("aqua")("[ CONNECT ]"), "Connecting to the WhatsApp bot....")
 if (autoJoin && linkGroup.includes("https://chat.whatsapp.com/")) {
@@ -140,29 +142,29 @@ sock.groupAcceptInvite(linkGroup.split("https://chat.whatsapp.com/")[1])
 }}
 })
 //=================================================//
-sock.ev.on("messages.upsert", async (chatUpdate) => {
-try {
-if (!chatUpdate.messages) return
-const msg = chatUpdate.messages[0] || chatUpdate.messages[chatUpdate.messages.length - 1]
+sock.ev.on("messages.upsert", async ({messages, type}) => {
+try{
+if (type !== "notify") return
+const msg = messages[0] || messages[messages.length - 1]
 if (msg.key && msg.key.remoteJid == "status@broadcast") {
 if (autoRead) { sock.readMessages([msg.key]) }
 return
 }
 if (msg.key.id.startsWith("BAE5") && msg.key.id.length == 16) return
-const m = await serialize(sock, msg)
+const m = serialize(sock, msg)
 loadDatabase(m)
-await Message(sock, m) 
+Message(sock, m) 
 } catch (e) {
 console.log(chalk.whiteBright("├"), chalk.keyword("red")("[ ERROR ]"), `${e}`)
 }
 })
 //=================================================//
 sock.ws.on("CB:call", async (json) => {
-await callingMessage(sock, json)
+callingMessage(sock, json)
 })
 //=================================================//
 sock.ev.on("group-participants.update", async (anu) => {
-await groupMessage(sock, anu)
+groupMessage(sock, anu)
 })
 //=================================================//
 sock.ev.on("creds.update", saveCreds)
