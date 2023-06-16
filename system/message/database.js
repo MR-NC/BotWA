@@ -76,10 +76,9 @@ if (db.settings[m.botNumber]) {
 if (!("setmenu" in db.settings[m.botNumber])) db.settings[m.botNumber].setmenu = "image"
 if (!("setwelcome" in db.settings[m.botNumber])) db.settings[m.botNumber].setwelcome = "image"
 if (!("setprefix" in db.settings[m.botNumber])) db.settings[m.botNumber].setprefix = "allprefix"
-if (!("quoted" in db.settings[m.botNumber])) db.settings[m.botNumber].quoted = "m"
-if (!("replytype" in db.settings[m.botNumber])) db.settings[m.botNumber].replytype = "web1"
+if (!("replytype" in db.settings[m.botNumber])) db.settings[m.botNumber].replytype = "mess4"
 if (!("mode" in db.settings[m.botNumber])) db.settings[m.botNumber].mode = "public"
-if (!("auto" in db.settings[m.botNumber])) db.settings[m.botNumber].auto = "available"
+if (!("auto" in db.settings[m.botNumber])) db.settings[m.botNumber].auto = "unavailable"
 if (!("autoblockcmd" in db.settings[m.botNumber])) db.settings[m.botNumber].autoblockcmd = false
 if (!("autoreport" in db.settings[m.botNumber])) db.settings[m.botNumber].autoreport = true
 if (!("autobio" in db.settings[m.botNumber])) db.settings[m.botNumber].autobio = false
@@ -97,10 +96,9 @@ if (!("antispam" in db.settings[m.botNumber])) db.settings[m.botNumber].antispam
 setmenu: "image", 
 setwelcome: "image", 
 setprefix: "allprefix",
-quoted: "m",         
-replytype: "web1", 
+replytype: "mess4", 
 mode: "public",
-auto: "available", 
+auto: "unavailable", 
 autoblockcmd: false, 
 autoreport: true, 
 autobio: false, 

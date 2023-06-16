@@ -1542,6 +1542,70 @@ break
 default:
 }
 //================================================================\\
+if (i18n.__("kata_manggil").includes(m.budy.toLowerCase()) && !m.isGroup || m.isGroup && !m.isAutoResponGroup && isQuotedText && m.quoted.sender == m.botNumber && i18n.__("kata_manggil").includes(m.budy.toLowerCase()) || ["hai bot","halo bot","bot","woi bot","woy bot","hey bot","hei bot","oy bot"].includes(m.budy.toLowerCase()) && m.isGroup && !m.isAutoResponGroup) {
+if (m.isOwner || m.key.fromMe) {return}
+if (m.autoVn) {
+sock.sendMessage(m.chat, { audio: pickRandom([audioPack.ada_apa_kak, audioPack.ada_apa_kak1, audioPack.iya_kak, audioPack.kenapa_kak, audioPack.oy]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+} else if (m.autoSticker) {
+sock.sendMessage(m.chat, { sticker: stickerPack.ucapsalam }, { quoted: (m.autoQuoted? m : "") })
+} else {
+setReply(util.format(pickRandom(["Ada apa kak kok panggil aku","Y","Iya kak?","Ada apa kak","Iya kak","Kenapa kak","Iy"])))
+}}
+//================================================================\\
+if (m.budy.includes("ualaikum") && !m.isGroup) {
+if (m.isOwner || m.key.fromMe) {return}
+if (m.autoVn) {
+sock.sendMessage(m.chat, { audio: audioPack.walaikunsalam, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+} else if (m.autoSticker) {
+sock.sendMessage(m.chat, { sticker: stickerPack.salam }, { quoted: (m.autoQuoted? m : "") })
+} else {
+setReply("Walaikumsalam kak")
+}}
+//================================================================\\
+for (const x of i18n.__("kata_toxic")) {
+if (m.budy.toLowerCase().includes(x) && !m.isGroup || m.isGroup && !m.isAutoResponGroup && !m.isAntiToxic && m.budy.toLowerCase().includes(x)) {
+if (m.isOwner || m.key.fromMe) {return}
+if (m.autoVn) {
+sock.sendMessage(m.chat, { audio: pickRandom([audioPack.dosa_pantek, audioPack.heeh, audioPack.jangan_toxic_om]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+} else if (m.autoSticker) {
+sock.sendMessage(m.chat, { sticker: stickerPack.toxic }, { quoted: (m.autoQuoted? m : "") })
+} else {
+setReply(util.format(pickRandom(["Jangan toxic kak 🙂","Jangan toxic kak 🙃","Jangan toxic kak😡","Jangan toxic kak 😠","Dilarang toxic kak 🙂","Dilarang toxic kak 🙃"])))
+}}}
+//================================================================\\
+if (i18n.__("kata_dosa").includes(m.budy.toLowerCase()) && !m.isGroup) {
+if (m.isOwner || m.key.fromMe) {return}
+if (m.autoVn) {
+sock.sendMessage(m.chat, { audio: pickRandom([audioPack.ngomong_apaan_sih, audioPack.dosa_pantek, audioPack.heeh, audioPack.baka, audioPack.ga_mau, audioPack.goblok]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+} else if (m.autoSticker) {
+sock.sendMessage(m.chat, { sticker: stickerPack.istigfar }, { quoted: (m.autoQuoted? m : "") })
+} else {
+setReply(util.format(pickRandom(["Dosa kak 🙂","Ga mau kak 🙃","Astagfirloh kak 🙂","Astagfirloh kak itu dosa 🙂"])))
+}}
+//================================================================\\
+if (m.budy.toLowerCase().includes("pagi") && !m.isGroup) {
+if (m.timeWib >= "11:00" && m.timeWib <= "23:50") {
+if (m.autoVn) {
+sock.sendMessage(m.chat, { audio: pickRandom([ audioPack.asautegondalimas, audioPack.ohayoghosaimase, audioPack.ohayo ]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+} else {
+setReply(`${m.ucapanWaktu} kak 🙂`)
+}}}
+//================================================================\\
+if (m.budy.toLowerCase().includes("malam") && !m.isGroup) {
+if (m.timeWib >= "06:00" && m.timeWib <= "17:00") {
+if (m.autoVn) {
+sock.sendMessage(m.chat, { audio: pickRandom([ audioPack.oyasumi, audioPack.oyasuminasai ]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+} else {
+setReply(`${m.ucapanWaktu} kak 🙂`)
+}}}
+//================================================================\\
+if (m.budy.toLowerCase().includes("siang") && !m.isGroup) {
+if (m.autoVn) {
+sock.sendMessage(m.chat, { audio: audioPack.konichiwa, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+} else {
+setReply(`${m.ucapanWaktu} kak 🙂`)
+}}
+//================================================================\\
 if (m.body.includes(">")) {
 if (!m.isOwner && !m.key.fromMe) return
 try{
