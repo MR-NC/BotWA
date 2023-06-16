@@ -12,9 +12,9 @@ module.exports = {
 		       	  isQuotedAudio: true
                   }
     }, 
-    callback: async (sock, m, { setReply }) => {
-        if (fs.readdirSync("./temp").filter((x) => x.includes(".mp3")).map((x) => x.split(".mp3")[0]).includes(m.text)) return setReply("Coba pakai nama lain")
+    callback: async ({ sock, m }) => {
+        if (fs.readdirSync("./temp").filter((x) => x.includes(".mp3")).map((x) => x.split(".mp3")[0]).includes(m.text)) return m.reply("Coba pakai nama lain")
         await sock.downloadAndSaveMediaMessage(m.quoted, "./temp/" + m.text)
-        await setReply("Success add vn " + m.text)
+        await m.reply("Success add vn " + m.text)
     }
 }

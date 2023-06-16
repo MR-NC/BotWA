@@ -9,13 +9,13 @@ module.exports = {
     isSewa: true,
     isPremium: true,
     isWait: true,
-    callback: async(sock, m, { setQuoted, command }) => {
+    callback: async({ sock, m, command }) => {
         let { data } = await axios.get("https://waifu.pics/api/nsfw/" + command == "neko2"? "neko" : command == "waifu2"? "waifu" : command)
         let buffer = await getBuffer(data.url)
         if (data.url.includes(".jpg") || data.url.includes(".jpeg") || data.url.includes(".png")) {
-        sock.sendMessage(m.chat, { image: buffer, caption: util.format(i18n.__("success")), }, { quoted: setQuoted })
+        sock.sendMessage(m.chat, { image: buffer, caption: util.format(i18n.__("success")), }, { quoted: (m.autoQuoted? m : "") })
         } else if (data.url.includes(".gif") || data.url.includes(".mp4")) {
-        sock.sendMessage(m.chat, { video: buffer, caption: util.format(i18n.__("success")), }, { quoted: setQuoted })
+        sock.sendMessage(m.chat, { video: buffer, caption: util.format(i18n.__("success")), }, { quoted: (m.autoQuoted? m : "") })
         }
     }
 }

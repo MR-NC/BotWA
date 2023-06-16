@@ -8,10 +8,10 @@ module.exports = {
     example: "{prefix}{command} Jasen",
     isSewa: true,
     isVip: true,
-    callback: async (sock, m, { setReply }) => {
-        if (m.text == config.ownerName) return setReply("Nama tersebut sudah di pakai")
+    callback: async ({ m }) => {
+        if (m.text == config.ownerName) return m.reply("Nama tersebut sudah di pakai")
         config.ownerName = m.text
-        setReply(`Success mengganti nama owner ke ${m.text}`)
+        m.reply(`Success mengganti nama owner ke ${m.text}`)
         setTimeout(() => {
         fs.writeFileSync("./settings.json", JSON.stringify(config, null, 2))
         }, 1000)

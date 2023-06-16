@@ -4,17 +4,17 @@ module.exports = {
     isSewa: true,
     isGroup: true,
     isAdmin: true,
-    callback: async (sock, m, { isAntiDelete, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (isAntiDelete == true) return setReply("Sudah active")
+        if (m.isAntiDelete == true) return m.reply("Sudah active")
         db.chats[m.chat].antidelete = true
-        setReply("Mode anti delete telah active")
+        m.reply("Mode anti delete telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (isAntiDelete == false) return setReply("Sudah non active")
+        if (m.isAntiDelete == false) return m.reply("Sudah non active")
         db.chats[m.chat].antidelete = false
-        setReply("Mode anti delete telah non active")
+        m.reply("Mode anti delete telah non active")
         } else {
-        setReply("\`\`\`「 MODE ANTI DELETE 」\`\`\`\n\n0. off\n1. on")
+        m.reply("\`\`\`「 MODE ANTI DELETE 」\`\`\`\n\n0. off\n1. on")
         }
     }
 }

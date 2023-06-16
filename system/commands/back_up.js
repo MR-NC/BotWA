@@ -5,10 +5,10 @@ module.exports = {
     commands: ["backup"],
     cooldown: 13,
     isSewa: true,
-    callback: async (sock, m, { setReply }) => {
+    callback: async ({ m }) => {
         exec(`git config --global user.email "${githubEmail}" && git config --global user.name "${githubUser}" && git add . && git commit -m "Updating" && git push`, (stdout, err) => {
-        if (stdout) return setReply(util.format(stdout))
-        if (err) return setReply(util.format(err))
+        if (stdout) return m.reply(util.format(stdout))
+        if (err) return m.reply(util.format(err))
         })
     }
 }

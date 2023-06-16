@@ -3,17 +3,17 @@ module.exports = {
     cooldown: 13,
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { autoReport, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (autoReport == true) return setReply("Sudah active")
+        if (m.autoReport == true) return m.reply("Sudah active")
         db.settings[m.botNumber].autoreport = true
-        setReply("Mode auto report telah active")
+        m.reply("Mode auto report telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (autoReport == false) return setReply("Sudah non active")
+        if (m.autoReport == false) return m.reply("Sudah non active")
         db.settings[m.botNumber].autoreport = false
-        setReply("Mode auto report telah non active")
+        m.reply("Mode auto report telah non active")
         } else {
-        setReply("\`\`\`「 MODE AUTO REPORT 」\`\`\`\n\n0. off\n1. on")
+        m.reply("\`\`\`「 MODE AUTO REPORT 」\`\`\`\n\n0. off\n1. on")
         }
     }
 }

@@ -3,7 +3,7 @@ module.exports = {
     commands: ["listpc"],
     cooldown: 13,
     isSewa: true,
-    callback: async (sock, m, { setReply }) => {
+    callback: async ({ m }) => {
         let data = Object.keys(store).includes(m.botNumber)? store[m.botNumber].chats.filter((x) => x.includes("@s.whatsapp.net")) : []
         let teks = "\`\`\`「 LIST PERSONAL CHAT 」\`\`\`\n\n"
         for (let x of data) {
@@ -11,6 +11,6 @@ module.exports = {
         teks += ` *•* Nama : ${name}\n *•* User : @${x.split("@")[0]}\n *•* Chat : https://wa.me/${x.split("@")[0]}\n\n────────────────────────\n\n`
         }
         teks += `\n\n*Total ada : ${data.length}*`
-        setReply(teks)
+        m.reply(teks)
     }
 }

@@ -12,16 +12,16 @@ module.exports = {
 		       	  isQuotedImage: true
                   }
     }, 
-    callback: async (sock, m, { isQuotedImage, isImage, setReply }) => {
+    callback: async ({ sock, m, isQuotedImage, isImage }) => {
         if (isImage && m.args[0] == "full" || isImage && m.args[0] == "/full" || isQuotedImage && m.args[0] == "full" || isQuotedImage && m.args[0] == "/full") {
         const media = await sock.downloadMediaMessage(isQuotedImage? m.quoted : m)
         const { img } = await generateProfilePicture(media)
         await sock.query({ tag: "iq", attrs: { to: m.botNumber, type: "set", xmlns: "w:profile:picture" }, content: [{ tag: "picture", attrs: { type: "image" }, content: img }]})
-        setReply(util.format(i18n.__("success")))
+        m.reply(util.format(i18n.__("success")))
         } else if (isImage || isQuotedImage) {
         const media = await sock.downloadMediaMessage(isQuotedImage? m.quoted : m)
         await sock.updateProfilePicture(m.botNumber, media)
-        setReply(util.format(i18n.__("success")))
+        m.reply(util.format(i18n.__("success")))
         }
     }
 }

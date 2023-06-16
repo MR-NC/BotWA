@@ -12,7 +12,7 @@ module.exports = {
 		       	  isQuotedVideo: true
                   }
     }, 
-    callback: async (sock, m, { isQuotedImage, isQuotedVideo, isImage, isVideo, setQuoted, setReply }) => {
+    callback: async ({ sock, m, isQuotedImage, isQuotedVideo, isImage, isVideo }) => {
         if (isImage || isQuotedImage) {
         const media = await sock.downloadMediaMessage(isQuotedImage? m.quoted : m)
         const options = {
@@ -26,10 +26,10 @@ module.exports = {
             }
         }
         axios.create({ baseURL: "https://sticker-api-tpe3wet7da-uc.a.run.app" }).post("/prepareWebp", options).then(({ data }) => {
-            sock.sendMessage(m.chat, { sticker: Buffer.from(data.webpBase64, "base64") }, { quoted: setQuoted })
+            sock.sendMessage(m.chat, { sticker: Buffer.from(data.webpBase64, "base64") }, { quoted: (m.autoQuoted? m : "") })
         })
         } else if (isVideo || isQuotedVideo) {
-        if ((isQuotedVideo? m.quoted.message[m.type].seconds : m.message[m.type].seconds) > 10) return setReply("Hanya dapat mendownload video sampai 10 detik kak")
+        if ((isQuotedVideo? m.quoted.message[m.type].seconds : m.message[m.type].seconds) > 10) return m.reply("Hanya dapat mendownload video sampai 10 detik kak")
         const media = await sock.downloadMediaMessage(isQuotedVideo? m.quoted : m)
         const options = {
             file: `data:video/mp4;base64,${media.toString("base64")}`,
@@ -47,7 +47,7 @@ module.exports = {
             }
         }
         axios.create({ baseURL: "https://sticker-api-tpe3wet7da-uc.a.run.app" }).post("/convertMp4BufferToWebpDataUrl", options).then(({ data }) => {
-            sock.sendMessage(m.chat, { sticker: Buffer.from(data.webpBase64, "base64") }, { quoted: setQuoted })
+            sock.sendMessage(m.chat, { sticker: Buffer.from(data.webpBase64, "base64") }, { quoted: (m.autoQuoted? m : "") })
         })
         }
     }

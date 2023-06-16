@@ -3,17 +3,17 @@ module.exports = {
     cooldown: 13,
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { autoSticker, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (autoSticker == true) return setReply("Sudah active")
+        if (m.autoSticker == true) return m.reply("Sudah active")
         db.settings[m.botNumber].autosticker = true
-        setReply("Mode auto sticker telah active")
+        m.reply("Mode auto sticker telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (autoSticker == false) return setReply("Sudah non active")
+        if (m.autoSticker == false) return m.reply("Sudah non active")
         db.settings[m.botNumber].autosticker = false
-        setReply("Mode auto sticker telah non active")
+        m.reply("Mode auto sticker telah non active")
         } else {
-        setReply("\`\`\`「 MODE AUTO STICKER 」\`\`\`\n\n0. off\n1. on")
+        m.reply("\`\`\`「 MODE AUTO STICKER 」\`\`\`\n\n0. off\n1. on")
         }
     }
 }

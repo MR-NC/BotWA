@@ -3,17 +3,17 @@ module.exports = {
     cooldown: 13,
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { autoJoin, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (autoJoin == true) return setReply("Sudah active")
+        if (m.autoJoin == true) return m.reply("Sudah active")
         db.settings[m.botNumber].autojoin = true
-        setReply("Mode auto join telah active")
+        m.reply("Mode auto join telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (autoJoin == false) return setReply("Sudah non active")
+        if (m.autoJoin == false) return m.reply("Sudah non active")
         db.settings[m.botNumber].autojoin = false
-        setReply("Mode auto join telah non active")
+        m.reply("Mode auto join telah non active")
         } else {
-        setReply("\`\`\`「 MODE AUTO JOIN 」\`\`\`\n\n0. off\n1. on")
+        m.reply("\`\`\`「 MODE AUTO JOIN 」\`\`\`\n\n0. off\n1. on")
         }
     }
 }

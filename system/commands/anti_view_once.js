@@ -4,17 +4,17 @@ module.exports = {
     isSewa: true,
     isGroup: true,
     isAdmin: true,
-    callback: async (sock, m, { isAntiViewOnce, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (isAntiViewOnce == true) return setReply("Sudah active")
+        if (m.isAntiViewOnce == true) return m.reply("Sudah active")
         db.chats[m.chat].antiviewonce = true
-        setReply("Mode anti view once telah active")
+        m.reply("Mode anti view once telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (isAntiViewOnce == false) return setReply("Sudah non active")
+        if (m.isAntiViewOnce == false) return m.reply("Sudah non active")
         db.chats[m.chat].antiviewonce = false
-        setReply("Mode anti view once telah non active")
+        m.reply("Mode anti view once telah non active")
         } else {
-        setReply("\`\`\`「 MODE ANTI VIEW ONCE 」\`\`\`\n\n0. off\n1. on")
+        m.reply("\`\`\`「 MODE ANTI VIEW ONCE 」\`\`\`\n\n0. off\n1. on")
         }
     }
 }

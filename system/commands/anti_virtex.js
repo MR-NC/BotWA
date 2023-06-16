@@ -5,17 +5,17 @@ module.exports = {
     isGroup: true,
     isAdmin: true,
     isBotAdmin: true,
-    callback: async (sock, m, { isAntiVirtex, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (isAntiVirtex == true) return setReply("Sudah active")
+        if (m.isAntiVirtex == true) return m.reply("Sudah active")
         db.chats[m.chat].antivirtex = true
-        setReply("Mode anti virtex telah active")
+        m.reply("Mode anti virtex telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (isAntiVirtex == false) return setReply("Sudah non active")
+        if (m.isAntiVirtex == false) return m.reply("Sudah non active")
         db.chats[m.chat].antivirtex = false
-        setReply("Mode anti virtex telah non active")
+        m.reply("Mode anti virtex telah non active")
         } else {
-        setReply("\`\`\`「 MODE ANTI VIRTEX 」\`\`\`\n\n0. off\n1. on")
+        m.reply("\`\`\`「 MODE ANTI VIRTEX 」\`\`\`\n\n0. off\n1. on")
         }
     }
 }

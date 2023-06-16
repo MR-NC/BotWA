@@ -6,7 +6,7 @@ module.exports = {
     cooldown: 13,
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { isImage, isVideo, isViewOnce, isDocument, isAllMedia, isQuotedAllMedia, isQuotedDocument, isQuotedLocation, isQuotedViewOnce, isQuotedImage, isQuotedSticker, isQuotedVideo, isQuotedAudio, isQuotedContact, setReply }) => {
+    callback: async ({ sock, m, isImage, isVideo, isViewOnce, isDocument, isAllMedia, isQuotedAllMedia, isQuotedDocument, isQuotedLocation, isQuotedViewOnce, isQuotedImage, isQuotedSticker, isQuotedVideo, isQuotedAudio, isQuotedContact }) => {
         const data = Object.keys(store).includes(m.botNumber)? [...Object.keys(await sock.groupFetchAllParticipating()), ...store[m.botNumber].chats.filter((x) => x.includes("@s.whatsapp.net"))] : Object.keys(await sock.groupFetchAllParticipating())
         if (isImage || isQuotedImage) {
         let teks = m.text? "\`\`\`「  BROADCAST MESSAGE  」\`\`\`\n\n" + m.text : "\`\`\`「  BROADCAST MESSAGE  」\`\`\`"
@@ -47,13 +47,13 @@ module.exports = {
         await sleep(2000)
         }
         } else if (!isAllMedia && !isQuotedAllMedia) {
-        if (!m.text) return setReply("Text?")
+        if (!m.text) return m.reply("Text?")
         let teks = "\`\`\`「  BROADCAST MESSAGE  」\`\`\`\n\n" + m.text
         for (let x of data) {
         await sock.sendMessage(x, { contextInfo: { forwardingScore: 10, isForwarded: true }, text: teks })
         await sleep(2000)
         }
         }
-        setReply(`Success send broadcast message to ${data.length} chats`)
+        m.reply(`Success send broadcast message to ${data.length} chats`)
     }
 }

@@ -6,9 +6,11 @@ module.exports = {
     example: "{prefix}{command} busy",
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { setReply, autoBio }) => {
-        if (autoBio) db.settings[m.botNumber].autobio = false
+    callback: async ({ sock, m }) => {
+        if (m.autoBio) db.settings[m.botNumber].autobio = false
+        setTimeout(async () => {
         await sock.setStatus(m.text)
-        await setReply(`Success mengganti bio ke ${m.text}`)
+        await m.reply(`Success mengganti bio ke ${m.text}`)
+        }, 1000)
     }
 }

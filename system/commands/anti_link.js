@@ -5,17 +5,17 @@ module.exports = {
     isGroup: true,
     isAdmin: true,
     isBotAdmin: true,
-    callback: async (sock, m, { isAntiLink, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (isAntiLink == true) return setReply("Sudah active")
+        if (m.isAntiLink == true) return m.reply("Sudah active")
         db.chats[m.chat].antilink = true
-        setReply("Mode anti link telah active")
+        m.reply("Mode anti link telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (isAntiLink == false) return setReply("Sudah non active")
+        if (m.isAntiLink == false) return m.reply("Sudah non active")
         db.chats[m.chat].antilink = false
-        setReply("Mode anti link telah non active")
+        m.reply("Mode anti link telah non active")
         } else {
-        setReply("\`\`\`「 MODE ANTI LINK 」\`\`\`\n\n0. off\n1. on")
+        m.reply("\`\`\`「 MODE ANTI LINK 」\`\`\`\n\n0. off\n1. on")
         }
     }
 }

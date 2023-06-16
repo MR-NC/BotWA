@@ -5,17 +5,17 @@ module.exports = {
     isGroup: true,
     isAdmin: true,
     isBotAdmin: true,
-    callback: async (sock, m, { isAntiLinkTelegram, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (isAntiLinkTelegram == true) return setReply("Sudah active")
+        if (m.isAntiLinkTelegram == true) return m.reply("Sudah active")
         db.chats[m.chat].antilinktele = true
-        setReply("Mode anti link telegram telah active")
+        m.reply("Mode anti link telegram telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (isAntiLinkTelegram == false) return setReply("Sudah non active")
+        if (m.isAntiLinkTelegram == false) return m.reply("Sudah non active")
         db.chats[m.chat].antilinktele = false
-        setReply("Mode anti link telegram telah non active")
+        m.reply("Mode anti link telegram telah non active")
         } else {
-        setReply("\`\`\`「 MODE ANTI LINK TELEGRAM 」\`\`\`\n\n0. off\n1. on")
+        m.reply("\`\`\`「 MODE ANTI LINK TELEGRAM 」\`\`\`\n\n0. off\n1. on")
         }
     }
 }

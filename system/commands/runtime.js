@@ -3,7 +3,7 @@ module.exports = {
     commands: ["runtime"],
     cooldown: 13,
     isSewa: true,
-    callback: async (sock, m, { setReply }) => {
-        setReply(`${runtime(process.uptime())}`)
+    callback: async ({ m }) => {
+        m.reply(`${runtime(process.uptime())}`)
     }
 }

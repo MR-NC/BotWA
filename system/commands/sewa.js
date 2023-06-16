@@ -2,7 +2,7 @@ const { ownerNumber } = require("@config")
 module.exports = {
     commands: ["listharga"],
     cooldown: 13,
-    callback: async (sock, m, { setReply }) => {
+    callback: async ({ m }) => {
         let teks = "\`\`\`「 LIST HARGA SEWA/UPGRADE 」\`\`\`\n\n"
         teks += "*Sewa Group*\n"
         teks += "- 1 hari : Rp. 1.000/free hari pertama\n"
@@ -54,6 +54,6 @@ module.exports = {
         teks += "• Owner fitur only\n"
         teks += "• Dan masih banyak lagi\n\n"
         teks += `Bot on 24 jam jika minat langsung chat saja owner https://wa.me/${ownerNumber}`
-        setReply(teks)
+        m.reply(teks)
     }
 }

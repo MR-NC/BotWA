@@ -8,10 +8,10 @@ module.exports = {
     example: "{prefix}{command} Gura Botz",
     isSewa: true,
     isVip: true,
-    callback: async (sock, m, { setReply }) => {
-        if (m.text == config.botName) return setReply("Nama tersebut sudah di pakai")
+    callback: async ({ m }) => {
+        if (m.text == config.botName) return m.reply("Nama tersebut sudah di pakai")
         config.botName = m.text
-        setReply(`Success mengganti nama bot ke ${m.text}`)
+        m.reply(`Success mengganti nama bot ke ${m.text}`)
         setTimeout(() => {
         fs.writeFileSync("./settings.json", JSON.stringify(config, null, 2))
         }, 1000)

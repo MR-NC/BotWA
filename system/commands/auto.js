@@ -3,21 +3,25 @@ module.exports = {
     cooldown: 13,
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { auto, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "recording" || m.args[0] == "1") {
-        if (auto == "recording") return setReply("Sudah active")
+        if (m.auto == "recording") return m.reply("Sudah active")
         db.settings[m.botNumber].auto = "recording"
-        setReply("Mode auto recording telah active")
+        m.reply("Mode auto recording telah active")
         } else if (m.args[0] == "typing" || m.args[0] == "2") {
-        if (auto == "typing") return setReply("Sudah active")
+        if (m.auto == "typing") return m.reply("Sudah active")
         db.settings[m.botNumber].auto = "typing"
-        setReply("Mode auto typing telah active")
+        m.reply("Mode auto typing telah active")
         } else if (m.args[0] == "available" || m.args[0] == "3") {
-        if (auto == "available") return setReply("Sudah active")
+        if (m.auto == "available") return m.reply("Sudah active")
         db.settings[m.botNumber].auto = "available"
-        setReply("Mode auto available telah active")
+        m.reply("Mode auto available telah active")
+        } else if (m.args[0] == "unavailable" || m.args[0] == "4") {
+        if (m.auto == "unavailable") return m.reply("Sudah active")
+        db.settings[m.botNumber].auto = "available"
+        m.reply("Mode auto unavailable telah active")
         } else {
-        setReply("\`\`\`「 MODE AUTO 」\`\`\`\n\n1. recording\n2. typing\n3. available")
+        m.reply("\`\`\`「 MODE AUTO 」\`\`\`\n\n1. recording\n2. typing\n3. available\n4. unavailable")
         }
     }
 }

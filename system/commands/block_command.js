@@ -6,10 +6,10 @@ module.exports = {
     example: "{prefix}{command} menu",
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { setReply }) => {
-        if (!Object.keys(db.allcommand).includes(m.text)) return setReply("Commands not found!")        
-        if (db.blockcmd.includes(m.text)) return setReply("Command sudah di block")
+    callback: async ({ m }) => {
+        if (!Object.keys(db.allcommand).includes(m.text)) return m.reply("Commands not found!")        
+        if (db.blockcmd.includes(m.text)) return m.reply("Command sudah di block")
         db.blockcmd.push(m.text)
-        await setReply(`Success block command ${m.text}`)
+        await m.reply(`Success block command ${m.text}`)
     }
 }

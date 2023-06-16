@@ -12,9 +12,9 @@ module.exports = {
 		       	  isQuotedSticker: true
                   }
     }, 
-    callback: async (sock, m, { setReply }) => {
-        if (fs.readdirSync("./temp").filter((x) => x.includes(".webp")).map((x) => x.split(".webp")[0]).includes(m.text)) return setReply("Coba pakai nama lain")
+    callback: async ({ sock, m }) => {
+        if (fs.readdirSync("./temp").filter((x) => x.includes(".webp")).map((x) => x.split(".webp")[0]).includes(m.text)) return m.reply("Coba pakai nama lain")
         await sock.downloadAndSaveMediaMessage(m.quoted, "./temp/" + m.text)
-        await setReply("Success add sticker " + m.text)
+        await m.reply("Success add sticker " + m.text)
     }
 }

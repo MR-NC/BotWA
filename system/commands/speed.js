@@ -3,7 +3,7 @@ module.exports = {
     commands: ["speed"],
     cooldown: 13,
     isSewa: true,
-    callback: async (sock, m, { setReply }) => {
-        setReply(`*_${moment.duration(Date.now() - parseInt(m.messageTimestamp.toString()) * 1000).asSeconds()} second_*`)
+    callback: async ({ m }) => {
+        m.reply(`*_${moment.duration(Date.now() - parseInt(m.messageTimestamp.toString()) * 1000).asSeconds()} second_*`)
     }
 }

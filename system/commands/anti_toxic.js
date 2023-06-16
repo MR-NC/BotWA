@@ -5,13 +5,13 @@ module.exports = {
     isGroup: true,
     isAdmin: true,
     isBotAdmin: true,
-    callback: async (sock, m, { isAntiToxic, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (isAntiToxic == true) return setReply("Sudah active")
+        if (m.isAntiToxic == true) return setReply("Sudah active")
         db.chats[m.chat].antitoxic = true
         setReply("Mode anti toxic telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (isAntiToxic == false) return setReply("Sudah non active")
+        if (m.isAntiToxic == false) return setReply("Sudah non active")
         db.chats[m.chat].antitoxic = false
         setReply("Mode anti toxic telah non active")
         } else {

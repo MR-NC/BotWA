@@ -4,7 +4,7 @@ module.exports = {
     commands: ["listsewa"],
     cooldown: 13,
     isSewa: true,
-    callback: async (sock, m, { setReply }) => {
+    callback: async ({ sock, m }) => {
         let teks = "\`\`\`「 LIST SEWA 」\`\`\`\n\n"
         let data = Object.keys(db.expired[m.botNumber].sewa)
         for (let x of data) {
@@ -22,6 +22,6 @@ module.exports = {
         teks += ` *•* Name Group : ${groupMetadata.subject}\n *•* Owner : ${groupMetadata.owner !== undefined ? "@" + groupMetadata.owner.split("@")[0] : "Tidak diketahui"}\n *•* Creation : ${moment(groupMetadata.creation * 1000).tz("Asia/Jakarta").format("DD/MM/YYYY HH:mm:ss")}\n *•* Total Members : ${groupMetadata.participants.length}\n *•* Date : ${db.expired[m.botNumber].sewa[x].date}\n *•* Expired : ${cekvip}\n *•* Link : ${url}\n\n────────────────────────\n\n`
         }
         teks += `\n*Total ada : ${data.length}*`
-        setReply(teks)
+        m.reply(teks)
     }
 }

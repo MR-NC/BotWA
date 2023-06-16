@@ -5,12 +5,12 @@ module.exports = {
     cooldown: 13,
     isSewa: true,
     isVip: true,
-    callback: async (sock, m, { botNumber, ownerNumber, setReply }) => {
-        if (!m.input) return setReply("Input nomer")
-        if (m.input.startsWith("08")) return setReply("Gunakan code negara kak")
-        if (m.input.split("@")[0] == config.ownerNumber) return setReply("User tersebut sudah menjadi owner")
+    callback: async ({ m }) => {
+        if (!m.input) return m.reply("Input nomer")
+        if (m.input.startsWith("08")) return m.reply("Gunakan code negara kak")
+        if (m.input.split("@")[0] == config.ownerNumber) return m.reply("User tersebut sudah menjadi owner")
         config.ownerNumber = m.input.split("@")[0]
-        setReply(`Success mengganti nomer owner ke ${m.input.split("@")[0]}`)
+        m.reply(`Success mengganti nomer owner ke ${m.input.split("@")[0]}`)
         setTimeout(() => {
         fs.writeFileSync("./settings.json", JSON.stringify(config, null, 2))
         }, 1000)

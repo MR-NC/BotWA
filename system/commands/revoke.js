@@ -5,10 +5,10 @@ module.exports = {
     isGroup: true,
     isAdmin: true,
     isBotAdmin: true,
-    callback: async (sock, m, { setReply }) => {
+    callback: async ({ sock, m }) => {
         await sock.groupRevokeInvite(m.chat)
         setTimeout(() => {
-        setReply("Success mengganti link group")
+        m.reply("Success mengganti link group")
         }, 1000)
     }
 }

@@ -4,11 +4,11 @@ module.exports = {
     cooldown: 13,
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { setReply }) => {
-        if (!m.input) return setReply("Input nomer")
-        if (m.input.startsWith("08")) return setReply("Gunakan code negara kak")
-        if (Object.keys(db.banned).includes(m.input)) return setReply("Sudah di ban")
+    callback: async ({ m }) => {
+        if (!m.input) return m.reply("Input nomer")
+        if (m.input.startsWith("08")) return m.reply("Gunakan code negara kak")
+        if (Object.keys(db.banned).includes(m.input)) return m.reply("Sudah di ban")
         db.banned[m.input] = { date: calender, reason: "" }
-        await setReply(`Success banned @${m.input.split("@")[0]}`)
+        await m.reply(`Success banned @${m.input.split("@")[0]}`)
     }
 }

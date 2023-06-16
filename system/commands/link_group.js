@@ -5,7 +5,7 @@ module.exports = {
     isSewa: true,
     isGroup: true,
     isBotAdmin: true,
-    callback: async (sock, m, { setReply }) => {
-        setReply(util.format("https://chat.whatsapp.com/" + await sock.groupInviteCode(m.chat)))
+    callback: async ({ sock, m }) => {
+        m.reply(util.format("https://chat.whatsapp.com/" + await sock.groupInviteCode(m.chat)))
     }
 }

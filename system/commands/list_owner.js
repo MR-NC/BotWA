@@ -3,7 +3,7 @@ module.exports = {
     commands: ["listowner"],
     cooldown: 13,
     isSewa: true,
-    callback: async (sock, m, { setReply }) => {
+    callback: async ({ m }) => {
         let teks = "\`\`\`「 LIST OWNER 」\`\`\`\n\n"
         let data = [...Object.keys(db.expired[m.botNumber].owner), ...Object.keys(db.expired[m.botNumber].vip)]
         for (let x of data) {
@@ -17,6 +17,6 @@ module.exports = {
         teks += ` *•* Nomer : @${x.split("@")[0]}\n *•* Date : ${date}\n *•* Expired : ${cekvip}\n\n────────────────────────\n\n`
         }
         teks += `\n\n*Total ada : ${data.length}*`
-        setReply(teks)
+        m.reply(teks)
     }
 }

@@ -3,17 +3,17 @@ module.exports = {
     cooldown: 13,
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { autoVn, setReply }) => {
+    callback: async ({ m }) => {
         if (m.args[0] == "on" || m.args[0] == "1") {
-        if (autoVn == true) return setReply("Sudah active")
+        if (m.autoVn == true) return m.reply("Sudah active")
         db.settings[m.botNumber].autovn = true
-        setReply("Mode auto vn telah active")
+        m.reply("Mode auto vn telah active")
         } else if (m.args[0] == "off" || m.args[0] == "0") {
-        if (autoVn == false) return setReply("Sudah non active")
+        if (m.autoVn == false) return m.reply("Sudah non active")
         db.settings[m.botNumber].autovn = false
-        setReply("Mode auto vn telah non active")
+        m.reply("Mode auto vn telah non active")
         } else {
-        setReply("\`\`\`「 MODE AUTO VN 」\`\`\`\n\n0. off\n1. on")
+        m.reply("\`\`\`「 MODE AUTO VN 」\`\`\`\n\n0. off\n1. on")
         }
     }
 }

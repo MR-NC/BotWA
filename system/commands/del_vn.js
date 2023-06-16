@@ -7,9 +7,9 @@ module.exports = {
     example: "{prefix}{command} oii",
     isSewa: true,
     isOwner: true,
-    callback: async (sock, m, { text, setReply }) => {
-        if (!fs.readdirSync("./temp").filter((x) => x.includes(".mp3")).map((x) => x.split(".mp3")[0]).includes(m.text)) return setReply("Nama tersebut tidak ada kak")
+    callback: async ({ m }) => {
+        if (!fs.readdirSync("./temp").filter((x) => x.includes(".mp3")).map((x) => x.split(".mp3")[0]).includes(m.text)) return m.reply("Nama tersebut tidak ada kak")
         fs.unlinkSync(`./temp/${m.text}.mp3`)
-        await setReply("Success delete vn " + m.text)
+        await m.reply("Success delete vn " + m.text)
     }
 }

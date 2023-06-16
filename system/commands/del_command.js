@@ -8,10 +8,10 @@ module.exports = {
 		       	  isQuotedSticker: true
                   }
     }, 
-    callback: async (sock, m, { setReply }) => {
+    callback: async ({ m }) => {
         const fileSha256 = m.quoted.message.stickerMessage.fileSha256.toString("base64")
-        if (!Object.keys(db.listcmd).includes(fileSha256)) return setReply("Sticker not found!")
+        if (!Object.keys(db.listcmd).includes(fileSha256)) return m.reply("Sticker not found!")
         delete db.listcmd[fileSha256] 
-        await setReply("Success delete command")
+        await m.reply("Success delete command")
     }
 }

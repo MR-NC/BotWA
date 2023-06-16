@@ -3,7 +3,7 @@ module.exports = {
     commands: ["dashboard"],
     cooldown: 13,
     isSewa: true,
-    callback: async (sock, m, { setReply }) => {
+    callback: async ({ m }) => {
         let succes = 0
         let failed = 0
         for (let x of Object.keys(db.dashboard)) {
@@ -24,6 +24,6 @@ module.exports = {
         for (let x of Object.keys(db.dashboard)) {
         teks += `${db.dashboard[x].failed > 0? " *•* " + toFirstCase(x) + " : " + Number(db.dashboard[x].failed) + "\n" : ""}`
         }
-        setReply(teks) 
+        m.reply(teks) 
     }
 }
