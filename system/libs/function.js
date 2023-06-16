@@ -66,15 +66,6 @@ preview: await cropped.scaleToFit(720, 720).getBufferAsync(jimp.MIME_JPEG)
 } catch {}
 }
 
-const reSize = (buffer, ukur1, ukur2) => {
-try{
-return new Promise(async(resolve, reject) => {
-var baper = await jimp.read(buffer);
-var ab = await baper.resize(ukur1, ukur2).getBufferAsync(jimp.MIME_JPEG)
-resolve(ab)
-})
-} catch {}
-}
 
 
 
@@ -110,7 +101,7 @@ return new Promise(resolve => setTimeout(resolve, ms));
 
 
 
-module.exports = { week, pickRandom, sleep, reSize, generateProfilePicture, randomNomor, decodeJid, reloadFile, runtime, calender, getBuffer, toFirstCase }
+module.exports = { week, pickRandom, sleep, generateProfilePicture, randomNomor, decodeJid, reloadFile, runtime, calender, getBuffer, toFirstCase }
 
 
 let file = require.resolve(__filename)
