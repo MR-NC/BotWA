@@ -10,7 +10,7 @@ return Object.keys(db.listerror).includes(cmd)
 }
 
 
-const menu = (m, mode, thePrefix) => {
+const menu = (m, thePrefix) => {
 return `*${botName}*
 ${week}, ${calender} 
 
@@ -18,13 +18,12 @@ ${week}, ${calender}
  ◉ Status : ${m.isOwner? "Owner" : m.isPremium? "Premium" : "Users"}
  ◉ Limit : ${db.users[m.sender].limit}
  ◉ Saldo : ${db.users[m.sender].balance}
- ◉ Mode : ${toFirstCase(mode)}
+ ◉ Mode : ${toFirstCase(m.mode)}
  ◉ Prefix : ${thePrefix}
  ◉ Time Wib : ${m.timeWib}
  ◉ Total Feature : ${Object.keys(db.allcommand).length}
  ◉ Total Error : ${Object.keys(db.listerror).length}
  ◉ Total User : ${Object.keys(db.users).length}
- ◉ User Block : ${m.listBlock.length}
  ◉ User Banned : ${Object.keys(db.banned).length}
 `}
 
@@ -73,7 +72,6 @@ return `  ╭─▸ 𝘖𝘸𝘯𝘦𝘳 𝘔𝘦𝘯𝘶
   │⭔ ${prefix}setpp ${featError("setpp")? yes : no }
   │⭔ ${prefix}setnoown ${featError("setnoown")? yes : no }
   │⭔ ${prefix}setprefix ${featError("setprefix")? yes : no }
-  │⭔ ${prefix}setquoted ${featError("setquoted")? yes : no }
   │⭔ ${prefix}setreply ${featError("setreply")? yes : no }
   │⭔ ${prefix}setwelcome ${featError("setwelcome")? yes : no }
   │
