@@ -43,19 +43,19 @@ const isQuotedLocation = m.quoted? ["locationMessage"].includes(m.quoted.type) :
 const isQuotedDocument = m.quoted? ["documentMessage","documentWithCaptionMessage"].includes(m.quoted.type) : false
 const isQuotedAllMedia = m.quoted? ["imageMessage","videoMessage","stickerMessage","audioMessage","viewOnceMessageV2","viewOnceMessage","contactMessage","contactsArrayMessage","locationMessage","documentMessage","documentWithCaptionMessage"].includes(m.quoted.type) : false
 //=========================[ FUNCTION PREFIX ]=========================\\
-if (m.setPrefix == "prefix") {
-var thePrefix = "MULTI-PREFIX"
+if (m.setPrefix == "yes") {
+var thePrefix = "YES-PREFIX"
 var prefix = /^#.!?|\\^/.test(m.body)? m.body.match(/^#.!?|\\^/gi) : "."
 var isCmd = m.body.startsWith(prefix)
 var command = (isSticker && Object.keys(db.listcmd).includes(m.message.stickerMessage.fileSha256.toString("base64")))? db.listcmd[m.message.stickerMessage.fileSha256.toString("base64")].command : isCmd? m.body.replace(prefix, "").trim().split(/ +/).shift().toLowerCase() : ""
 var cmdOptions = commands.get(command)
-} else if (m.setPrefix == "noprefix") {
-var thePrefix = "NO-PREFIX"
+} else if (m.setPrefix == "noo") {
+var thePrefix = "NOO-PREFIX"
 var prefix = ""
 var isCmd = m.body.startsWith(prefix)
 var command = (isSticker && Object.keys(db.listcmd).includes(m.message.stickerMessage.fileSha256.toString("base64")))? db.listcmd[m.message.stickerMessage.fileSha256.toString("base64")].command : m.body.replace(prefix, "").trim().split(/ +/).shift().toLowerCase()
 var cmdOptions = commands.get(command)
-} else if (m.setPrefix == "allprefix") {
+} else if (m.setPrefix == "all") {
 var thePrefix = "ALL-PREFIX"
 var prefix = /^#.!?|\\^/.test(m.body)? m.body.match(/^#.!?|\\^/gi) : "."
 var isCmd = m.body.startsWith(prefix)

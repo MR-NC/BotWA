@@ -75,7 +75,7 @@ afk_group: []
 if (db.settings[m.botNumber]) {
 if (!("setmenu" in db.settings[m.botNumber])) db.settings[m.botNumber].setmenu = "image"
 if (!("setwelcome" in db.settings[m.botNumber])) db.settings[m.botNumber].setwelcome = "image"
-if (!("setprefix" in db.settings[m.botNumber])) db.settings[m.botNumber].setprefix = "allprefix"
+if (!("setprefix" in db.settings[m.botNumber])) db.settings[m.botNumber].setprefix = "yes"
 if (!("replytype" in db.settings[m.botNumber])) db.settings[m.botNumber].replytype = "mess4"
 if (!("mode" in db.settings[m.botNumber])) db.settings[m.botNumber].mode = "public"
 if (!("auto" in db.settings[m.botNumber])) db.settings[m.botNumber].auto = "unavailable"
@@ -95,7 +95,7 @@ if (!("antispam" in db.settings[m.botNumber])) db.settings[m.botNumber].antispam
 } else db.settings[m.botNumber] = {
 setmenu: "image", 
 setwelcome: "image", 
-setprefix: "allprefix",
+setprefix: "yes",
 replytype: "mess4", 
 mode: "public",
 auto: "unavailable", 
