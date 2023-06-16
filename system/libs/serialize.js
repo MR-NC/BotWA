@@ -196,7 +196,7 @@ exports.serialize = (sock, msg) => {
     m.isMention = m.mentionedJid.length > 0
     m.setMenu = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].setmenu : "image"
     m.setWelcome = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].setwelcome : "image"
-    m.setPrefix = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].setprefix : "allprefix"
+    m.setPrefix = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].setprefix : "yes"
     m.replyType = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].replytype : "mess4"
     m.mode = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].mode : "public"
     m.auto = Object.keys(db.settings).includes(m.botNumber)? db.settings[m.botNumber].auto : "unavailable"
