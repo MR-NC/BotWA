@@ -1,11 +1,11 @@
 const { ownerNumber, logonya } = require("@config")
 const { randomNomor } = require("@libs/function")
 module.exports = {
-    commands: ["m.reply"],
+    commands: ["setreply"],
     cooldown: 13,
     isSewa: true,
     isOwner: true,
-    callback: async ({ m }) => {
+    callback: async ({ sock, m }) => {
         if (m.args[0] == "mess1" || m.args[0] == "1") {
         if (m.replyType == "mess1") return m.reply("Sudah active")
         db.settings[m.botNumber].replytype = "mess1"
