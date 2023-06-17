@@ -1,29 +1,32 @@
 const fs = require("fs")
 const chalk = require("chalk")
-const { ownerNumber } = require("@config")
-const { decodeJid, getBuffer } = require("@libs/function")
+const { ownerNumber, logonya } = require("@config")
+const { decodeJid, randomNomor } = require("@libs/function")
 
 module.exports = async(sock, json) => {
 const botNumber = decodeJid(sock.user.id)
 const callerId = json.content[0].attrs['call-creator']
 const replyType = Object.keys(db.settings).includes(botNumber)? db.settings[botNumber].replytype : "web1"
 const antiCall = Object.keys(db.settings).includes(botNumber)? db.settings[botNumber].anticall : false
-try{
-var ppimg = await sock.profilePictureUrl(callerId, "image")
-} catch {
-var ppimg = "https://raw.githubusercontent.com/Aztecs444/media/Zeck/image/profilePicture.jpg"
-}
-const ofrply = await getBuffer(ppimg)
-const setReply = async(chatId, teks) => {
-if (replyType == "web1") {
-sock.sendMessage(chatId, { contextInfo: { mentionedJid: [...teks.matchAll(/@(\d{0,16})/g)].map((x) => x[1] + "@s.whatsapp.net"), externalAdReply: { showAdAttribution: true, title: "CALLING BOT", body: "DONT CLICK HERE", previewType: "PHOTO", thumbnail: ofrply, sourceUrl: "https://wa.me/" + ownerNumber }}, text: teks })
-} else if (replyType == "web2") {
-sock.sendMessage(chatId, { contextInfo: { mentionedJid: [...teks.matchAll(/@(\d{0,16})/g)].map((x) => x[1] + "@s.whatsapp.net"), forwardingScore: 9999, isForwarded: true, showAdAttribution: true, externalAdReply: { title: "CALLING BOT", body: "DONT CLICK HERE", previewType: "PHOTO", thumbnail: ofrply, sourceUrl: "https://wa.me/" + ownerNumber }}, text: teks })
-} else if (replyType == "web3") {
-sock.sendMessage(chatId, { contextInfo: { mentionedJid: [...teks.matchAll(/@(\d{0,16})/g)].map((x) => x[1] + "@s.whatsapp.net"), forwardingScore: 10, isForwarded: true, externalAdReply: { showAdAttribution: true, title: "CALLING BOT", body: "DONT CLICK HERE", previewType: "PHOTO", thumbnail: ofrply, sourceUrl: "https://wa.me/" + ownerNumber }}, text: teks })
-} else if (replyType == "mess") {
+
+const setReply = (chatId, teks) => {
+if (replyType == "mess1") {
+sock.sendMessage(chatId, { text: teks, contextInfo: { mentionedJid: [...teks.matchAll(/@(\d{0,16})/g)].map((x) => x[1] + "@s.whatsapp.net"), externalAdReply: { showAdAttribution: true, title: "CALLING BOT", body: "DONT CLICK HERE", previewType: "PHOTO", thumbnailUrl: (logonya.isLogo? logonya.url : "https://raw.githubusercontent.com/Aztecs444/Elaina/Zeck/" + randomNomor(10) + ".jpg"), sourceUrl: "https://wa.me/" + ownerNumber }}})
+} else if (replyType == "mess2") {
+sock.sendMessage(chatId, { text: teks, contextInfo: { mentionedJid: [...teks.matchAll(/@(\d{0,16})/g)].map((x) => x[1] + "@s.whatsapp.net"), forwardingScore: 999, isForwarded: true, showAdAttribution: true, externalAdReply: { title: "CALLING BOT", body: "DONT CLICK HERE", previewType: "PHOTO", thumbnailUrl: (logonya.isLogo? logonya.url : "https://raw.githubusercontent.com/Aztecs444/Elaina/Zeck/" + randomNomor(10) + ".jpg"), sourceUrl: "https://wa.me/" + ownerNumber }}})
+} else if (replyType == "mess3") {
+sock.sendMessage(chatId, { text: teks, contextInfo: { mentionedJid: [...teks.matchAll(/@(\d{0,16})/g)].map((x) => x[1] + "@s.whatsapp.net"), forwardingScore: 10, isForwarded: true, externalAdReply: { showAdAttribution: true, title: "CALLING BOT", body: "DONT CLICK HERE", previewType: "PHOTO", thumbnailUrl: (logonya.isLogo? logonya.url : "https://raw.githubusercontent.com/Aztecs444/Elaina/Zeck/" + randomNomor(10) + ".jpg"), sourceUrl: "https://wa.me/" + ownerNumber }}})
+} else if (replyType == "mess4") {
+sock.sendMessage(chatId, { text: teks, contextInfo: { mentionedJid: [...teks.matchAll(/@(\d{0,16})/g)].map((x) => x[1] + "@s.whatsapp.net"), forwardingScore: 999, isForwarded: true }})
+} else if (replyType == "mess5") {
+sock.sendMessage(chatId, { text: teks, contextInfo: { mentionedJid: [...teks.matchAll(/@(\d{0,16})/g)].map((x) => x[1] + "@s.whatsapp.net"), forwardingScore: 10, isForwarded: true }})
+} else if (replyType == "mess6") {
 sock.sendMessage(chatId, { text: teks, mentions: [...teks.matchAll(/@(\d{0,16})/g)].map((x) => x[1] + "@s.whatsapp.net") })
 }}
+
+
+
+
 if (antiCall && json.content[0].tag == "offer") {
 if (callerId.split("@")[0] == ownerNumber) return
 setTimeout(() => {
