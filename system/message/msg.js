@@ -92,43 +92,43 @@ db.expired[m.botNumber].sewa[m.chat] = { date: calender, expired: "INFINITY" }
 //=========================[ ONLY MESSAGE ]=========================\\
 const onlyOwner = async() => {
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([audioPack.ga_mau, audioPack.lu_siapa_anjir, audioPack.ga_boleh]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([audioPack.ga_mau, audioPack.lu_siapa_anjir, audioPack.ga_boleh]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else if (m.autoSticker) {
-sock.sendMessage(m.chat, { sticker: stickerPack.owner }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { sticker: { url: stickerPack.owner }}, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(util.format(i18n.__("message.owner_only")))
 }}
 const onlyAdmin = async() => {
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([audioPack.ga_mau, audioPack.lu_siapa_anjir, audioPack.ga_boleh]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([audioPack.ga_mau, audioPack.lu_siapa_anjir, audioPack.ga_boleh]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else if (m.autoSticker) {
-sock.sendMessage(m.chat, { sticker: stickerPack.hanya_admin }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { sticker: { url: stickerPack.hanya_admin }}, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(util.format(i18n.__("message.admin_only")))
 }}
 const onlyBadmin = async() => {
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([audioPack.goblok, audioPack.baka]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([audioPack.goblok, audioPack.baka]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else if (m.autoSticker) {
-sock.sendMessage(m.chat, { sticker: stickerPack.jadiin_admin }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { sticker: { url: stickerPack.jadiin_admin }}, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(util.format(i18n.__("message.bot_admin_only")))
 }}
 const onlyGroup = async() => {
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([audioPack.goblok, audioPack.baka]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([audioPack.goblok, audioPack.baka]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else { 
 m.reply(util.format(i18n.__("message.group_only")))
 }}
 const onlyPrivate = async() => {
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([audioPack.goblok, audioPack.baka]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([audioPack.goblok, audioPack.baka]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(util.format(i18n.__("message.private_only")))
 }}
 const onlyWait = async() => {
 if (m.autoSticker) {
-sock.sendMessage(m.chat, { sticker: stickerPack.oke_tunggu }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { sticker: { url: stickerPack.oke_tunggu }}, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(util.format(i18n.__("wait")))
 }}
@@ -1054,9 +1054,9 @@ if (Object.keys(db.antispam).includes(m.sender)) {
 if (db.antispam[m.sender].hit < 5) {
 db.antispam[m.sender].hit += 1
 if (m.autoVn) {
-return sock.sendMessage(m.chat, { audio: audioPack.jangan_spam_ntar_gua_ewe, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+return sock.sendMessage(m.chat, { audio: { url: audioPack.jangan_spam_ntar_gua_ewe }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else if (m.autoSticker) {
-return sock.sendMessage(m.chat, { sticker: stickerPack.jangan_spam }, { quoted: (m.autoQuoted? m : "") })
+return sock.sendMessage(m.chat, { sticker: { url: stickerPack.jangan_spam }}, { quoted: (m.autoQuoted? m : "") })
 } else {
 return m.reply("Jangan spam 😡")
 }} else {
@@ -1330,7 +1330,7 @@ let { data } = await axios.get(`https://api.simsimi.net/v2/?text=${encodeURI(m.b
 let sami = data.success
 if (m.budy.toLowerCase().includes("ara")) {
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([ audioPack.ngomong_apaan_sih, audioPack.kaga_ada, audioPack.ga_mau, audioPack.ga_da, audioPack.ara_ara, audioPack.ara_ara_goblok, ]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([ audioPack.ngomong_apaan_sih, audioPack.kaga_ada, audioPack.ga_mau, audioPack.ga_da, audioPack.ara_ara, audioPack.ara_ara_goblok, ]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else m.reply(pickRandom([randomAra]))
 } else if (m.budy.toLowerCase().includes("desah") || i18n.__("kata_dosa").includes(m.budy.toLowerCase())) {
 m.reply(pickRandom([randomDesah]))
@@ -1545,9 +1545,9 @@ default:
 if (i18n.__("kata_manggil").includes(m.budy.toLowerCase()) && !m.isGroup && !m.autoRespon || m.isGroup && !m.isAutoResponGroup && isQuotedText && m.quoted.sender == m.botNumber && i18n.__("kata_manggil").includes(m.budy.toLowerCase()) || ["hai bot","halo bot","bot","woi bot","woy bot","hey bot","hei bot","oy bot"].includes(m.budy.toLowerCase()) && m.isGroup && !m.isAutoResponGroup) {
 if (m.isOwner || m.key.fromMe) {return}
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([audioPack.ada_apa_kak, audioPack.ada_apa_kak1, audioPack.iya_kak, audioPack.kenapa_kak, audioPack.oy]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([audioPack.ada_apa_kak, audioPack.ada_apa_kak1, audioPack.iya_kak, audioPack.kenapa_kak, audioPack.oy]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else if (m.autoSticker) {
-sock.sendMessage(m.chat, { sticker: stickerPack.ucapsalam }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { sticker: { url: stickerPack.ucapsalam }}, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(util.format(pickRandom(["Ada apa kak kok panggil aku","Y","Iya kak?","Ada apa kak","Iya kak","Kenapa kak","Iy"])))
 }}
@@ -1555,9 +1555,9 @@ m.reply(util.format(pickRandom(["Ada apa kak kok panggil aku","Y","Iya kak?","Ad
 if (m.budy.includes("ualaikum") && !m.isGroup && !m.autoRespon) {
 if (m.isOwner || m.key.fromMe) {return}
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: audioPack.walaikunsalam, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: audioPack.walaikunsalam }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else if (m.autoSticker) {
-sock.sendMessage(m.chat, { sticker: stickerPack.salam }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { sticker: { url: stickerPack.salam }}, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply("Walaikumsalam kak")
 }}
@@ -1566,9 +1566,9 @@ for (const x of i18n.__("kata_toxic")) {
 if (m.budy.toLowerCase().includes(x) && !m.isGroup && !m.autoRespon || m.isGroup && !m.isAutoResponGroup && !m.isAntiToxic && m.budy.toLowerCase().includes(x)) {
 if (m.isOwner || m.key.fromMe) {return}
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([audioPack.dosa_pantek, audioPack.heeh, audioPack.jangan_toxic_om]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([audioPack.dosa_pantek, audioPack.heeh, audioPack.jangan_toxic_om]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else if (m.autoSticker) {
-sock.sendMessage(m.chat, { sticker: stickerPack.toxic }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { sticker: { url: stickerPack.toxic }}, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(util.format(pickRandom(["Jangan toxic kak 🙂","Jangan toxic kak 🙃","Jangan toxic kak😡","Jangan toxic kak 😠","Dilarang toxic kak 🙂","Dilarang toxic kak 🙃"])))
 }}}
@@ -1576,9 +1576,9 @@ m.reply(util.format(pickRandom(["Jangan toxic kak 🙂","Jangan toxic kak 🙃",
 if (i18n.__("kata_dosa").includes(m.budy.toLowerCase()) && !m.isGroup && !m.autoRespon) {
 if (m.isOwner || m.key.fromMe) {return}
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([audioPack.ngomong_apaan_sih, audioPack.dosa_pantek, audioPack.heeh, audioPack.baka, audioPack.ga_mau, audioPack.goblok]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([audioPack.ngomong_apaan_sih, audioPack.dosa_pantek, audioPack.heeh, audioPack.baka, audioPack.ga_mau, audioPack.goblok]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else if (m.autoSticker) {
-sock.sendMessage(m.chat, { sticker: stickerPack.istigfar }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { sticker: { url: stickerPack.istigfar }}, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(util.format(pickRandom(["Dosa kak 🙂","Ga mau kak 🙃","Astagfirloh kak 🙂","Astagfirloh kak itu dosa 🙂"])))
 }}
@@ -1586,7 +1586,7 @@ m.reply(util.format(pickRandom(["Dosa kak 🙂","Ga mau kak 🙃","Astagfirloh k
 if (m.budy.toLowerCase().includes("pagi") && !m.isGroup) {
 if (m.ucapanWaktu == "Selamat pagi") {
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([ audioPack.asautegondalimas, audioPack.ohayoghosaimase, audioPack.ohayo ]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([ audioPack.asautegondalimas, audioPack.ohayoghosaimase, audioPack.ohayo ]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(`${m.ucapanWaktu} kak 🙂`)
 }}}
@@ -1594,7 +1594,7 @@ m.reply(`${m.ucapanWaktu} kak 🙂`)
 if (m.budy.toLowerCase().includes("malam") && !m.isGroup && !m.autoRespon) {
 if (m.ucapanWaktu == "Selamat malam") {
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: pickRandom([ audioPack.oyasumi, audioPack.oyasuminasai ]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: pickRandom([ audioPack.oyasumi, audioPack.oyasuminasai ]) }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(`${m.ucapanWaktu} kak 🙂`)
 }}}
@@ -1602,7 +1602,7 @@ m.reply(`${m.ucapanWaktu} kak 🙂`)
 if (m.budy.toLowerCase().includes("siang") && !m.isGroup && !m.autoRespon) {
 if (m.ucapanWaktu == "Selamat siang") {
 if (m.autoVn) {
-sock.sendMessage(m.chat, { audio: audioPack.konichiwa, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
+sock.sendMessage(m.chat, { audio: { url: audioPack.konichiwa }, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else {
 m.reply(`${m.ucapanWaktu} kak 🙂`)
 }}}
