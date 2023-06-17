@@ -1549,7 +1549,7 @@ sock.sendMessage(m.chat, { audio: pickRandom([audioPack.ada_apa_kak, audioPack.a
 } else if (m.autoSticker) {
 sock.sendMessage(m.chat, { sticker: stickerPack.ucapsalam }, { quoted: (m.autoQuoted? m : "") })
 } else {
-setReply(util.format(pickRandom(["Ada apa kak kok panggil aku","Y","Iya kak?","Ada apa kak","Iya kak","Kenapa kak","Iy"])))
+m.reply(util.format(pickRandom(["Ada apa kak kok panggil aku","Y","Iya kak?","Ada apa kak","Iya kak","Kenapa kak","Iy"])))
 }}
 //================================================================\\
 if (m.budy.includes("ualaikum") && !m.isGroup && !m.autoRespon) {
@@ -1559,7 +1559,7 @@ sock.sendMessage(m.chat, { audio: audioPack.walaikunsalam, mimetype: "audio/mp4"
 } else if (m.autoSticker) {
 sock.sendMessage(m.chat, { sticker: stickerPack.salam }, { quoted: (m.autoQuoted? m : "") })
 } else {
-setReply("Walaikumsalam kak")
+m.reply("Walaikumsalam kak")
 }}
 //================================================================\\
 for (const x of i18n.__("kata_toxic")) {
@@ -1570,7 +1570,7 @@ sock.sendMessage(m.chat, { audio: pickRandom([audioPack.dosa_pantek, audioPack.h
 } else if (m.autoSticker) {
 sock.sendMessage(m.chat, { sticker: stickerPack.toxic }, { quoted: (m.autoQuoted? m : "") })
 } else {
-setReply(util.format(pickRandom(["Jangan toxic kak 🙂","Jangan toxic kak 🙃","Jangan toxic kak😡","Jangan toxic kak 😠","Dilarang toxic kak 🙂","Dilarang toxic kak 🙃"])))
+m.reply(util.format(pickRandom(["Jangan toxic kak 🙂","Jangan toxic kak 🙃","Jangan toxic kak😡","Jangan toxic kak 😠","Dilarang toxic kak 🙂","Dilarang toxic kak 🙃"])))
 }}}
 //================================================================\\
 if (i18n.__("kata_dosa").includes(m.budy.toLowerCase()) && !m.isGroup && !m.autoRespon) {
@@ -1580,7 +1580,7 @@ sock.sendMessage(m.chat, { audio: pickRandom([audioPack.ngomong_apaan_sih, audio
 } else if (m.autoSticker) {
 sock.sendMessage(m.chat, { sticker: stickerPack.istigfar }, { quoted: (m.autoQuoted? m : "") })
 } else {
-setReply(util.format(pickRandom(["Dosa kak 🙂","Ga mau kak 🙃","Astagfirloh kak 🙂","Astagfirloh kak itu dosa 🙂"])))
+m.reply(util.format(pickRandom(["Dosa kak 🙂","Ga mau kak 🙃","Astagfirloh kak 🙂","Astagfirloh kak itu dosa 🙂"])))
 }}
 //================================================================\\
 if (m.budy.toLowerCase().includes("pagi") && !m.isGroup) {
@@ -1588,7 +1588,7 @@ if (m.ucapanWaktu == "Selamat pagi") {
 if (m.autoVn) {
 sock.sendMessage(m.chat, { audio: pickRandom([ audioPack.asautegondalimas, audioPack.ohayoghosaimase, audioPack.ohayo ]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else {
-setReply(`${m.ucapanWaktu} kak 🙂`)
+m.reply(`${m.ucapanWaktu} kak 🙂`)
 }}}
 //================================================================\\
 if (m.budy.toLowerCase().includes("malam") && !m.isGroup && !m.autoRespon) {
@@ -1596,7 +1596,7 @@ if (m.ucapanWaktu == "Selamat malam") {
 if (m.autoVn) {
 sock.sendMessage(m.chat, { audio: pickRandom([ audioPack.oyasumi, audioPack.oyasuminasai ]), mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else {
-setReply(`${m.ucapanWaktu} kak 🙂`)
+m.reply(`${m.ucapanWaktu} kak 🙂`)
 }}}
 //================================================================\\
 if (m.budy.toLowerCase().includes("siang") && !m.isGroup && !m.autoRespon) {
@@ -1604,7 +1604,7 @@ if (m.ucapanWaktu == "Selamat siang") {
 if (m.autoVn) {
 sock.sendMessage(m.chat, { audio: audioPack.konichiwa, mimetype: "audio/mp4", ptt: true }, { quoted: (m.autoQuoted? m : "") })
 } else {
-setReply(`${m.ucapanWaktu} kak 🙂`)
+m.reply(`${m.ucapanWaktu} kak 🙂`)
 }}}
 //================================================================\\
 if (m.body.includes(">")) {
