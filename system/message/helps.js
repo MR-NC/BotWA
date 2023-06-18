@@ -115,6 +115,7 @@ return `
   │⭔ ${prefix}remove ${featError("remove")? yes : no }
   │⭔ ${prefix}promote ${featError("promote")? yes : no }
   │⭔ ${prefix}demote ${featError("demote")? yes : no }
+  │⭔ ${prefix}afk ${featError("afk")? yes : no }
   │
   ╰────────────˧`
 }
