@@ -74,17 +74,38 @@ let first = str.split(" ").map((nama) => nama.charAt(0).toUpperCase() + nama.sli
 return first
 }
 
-const runtime = (seconds) => {
-seconds = Number(seconds);
-var d = Math.floor(seconds / (3600 * 24));
-var h = Math.floor((seconds % (3600 * 24)) / 3600);
-var m = Math.floor((seconds % 3600) / 60);
-var s = Math.floor(seconds % 60);
-var dDisplay = d > 0 ? d + (d == 1 ? `days, ` : ` Days, `) : "";
-var hDisplay = h > 0 ? h + (h == 1 ? ` hours, ` : ` Hours, `) : "";
-var mDisplay = m > 0 ? m + (m == 1 ? ` minutes, ` : ` Minutes, `) : "";
-var sDisplay = s > 0 ? s + (s == 1 ? ` seconds` : ` Seconds`) : "";
-return dDisplay + hDisplay + mDisplay + sDisplay;
+const runtime = (time) => {
+time = Number(time)
+const teks = ""
+const years = Math.floor(time / (3600 * 8640))
+const months = Math.floor(time / (3600 * 720))
+const weeks = Math.floor(time / (3600 * 168))
+const days = Math.floor(time / (3600 * 24))
+const hours = Math.floor((time % (3600 * 24)) / 3600)
+const minutes = Math.floor((time % 3600) / 60)
+const seconds = Math.floor(time % 60)
+if (years > 0) {
+teks += `${years} years, `
+}
+if (months > 0) {
+teks += `${months} months, `
+}
+if (weeks > 0) {
+teks += `${weeks} weeks, `
+}
+if (days > 0) {
+teks += `${days} days, `
+}
+if (hours > 0) {
+teks += `${hours} hours, `
+}
+if (minutes > 0) {
+teks += `${minutes} minutes, `
+}
+if (seconds > 0) {
+teks += `${seconds} seconds`
+}
+return teks
 }
 
 const randomNomor = (angka) => {
