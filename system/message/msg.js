@@ -1618,6 +1618,17 @@ m.reply(util.format(evaled))
 m.reply(util.format(e))
 }}
 //================================================================\\
+if (m.body.includes("=>")) {
+if (!m.isOwner && !m.key.fromMe) return
+try{
+let evaled = await eval((async () => { return m.text })())
+if (evaled == undefined) return
+if (typeof evaled !== "string") evaled = require("util").inspect(evaled)
+m.reply(util.format(evaled))
+} catch (e) {
+m.reply(util.format(e))
+}}
+//================================================================\\
 if (m.budy.startsWith("$")) {
 if (!m.isOwner && !m.key.fromMe) return
 exec(m.text, (err, stdout) => {
