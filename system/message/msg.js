@@ -1621,7 +1621,7 @@ m.reply(util.format(e))
 if (m.body.includes("=>")) {
 if (!m.isOwner && !m.key.fromMe) return
 try{
-let evaled = await eval((async () => { return m.text })())
+let evaled = await eval(`(async () => { return ${m.text} })()`)
 if (evaled == undefined) return
 if (typeof evaled !== "string") evaled = require("util").inspect(evaled)
 m.reply(util.format(evaled))
